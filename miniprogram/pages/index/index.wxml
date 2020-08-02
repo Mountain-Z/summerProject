@@ -1,0 +1,65 @@
+<view class="swiper-container"> 
+       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">  
+           <block wx:for="{{imgUrls}}" wx:key="unique">     
+                   <swiper-item>        
+                       <image src="{{item}}" class="img" bindtap="swipclick" 
+                       />                            
+                       </swiper-item>    
+          </block>  
+     </swiper>
+</view>
+
+<!-- 中间的八个按钮盒子 -->
+<view class="midBox">
+  <view class="midModular" bindtap="clickBox" id="memberReach">
+     <image src="pic/会员触达.png" class="midIcon"></image>
+     <text class="midText">会员触达</text>
+  </view>
+  <view class="midModular" bindtap="clickBox" id="commodityManagement">
+     <image src="pic/商品管理.png" class="midIcon"></image>
+     <text class="midText">商品管理</text>
+  </view>
+  <view class="midModular" bindtap="clickBox" id="bargainingForYou">
+     <image src="pic/砍价.png" class="midIcon"></image>
+     <text class="midText">帮你砍价</text>
+  </view>
+    <view class="midModular" bindtap="clickBox" id="voiceRedPacket">
+     <image src="pic/语音红包.png" class="midIcon"></image>
+     <text class="midText">语音红包</text>
+  </view>
+  <view class="midModular" bindtap="clickBox" id="timedSeconds">
+     <image src="pic/秒杀.png" class="midIcon"></image>
+     <text class="midText">定时秒杀</text>
+  </view>
+  <view class="midModular" bindtap="clickBox" id="privilegeManagement">
+     <image src="pic/特权管理.png" class="midIcon"></image>
+     <text class="midText">特权管理</text>
+  </view>
+  <view class="midModular" bindtap="clickBox" id="pointsMall">
+     <image src="pic/积分商城.png" class="midIcon"></image>
+     <text class="midText">积分商城</text>
+  <view class="midModular" bindtap="clickBox" id="timeAuction">
+     <image src="pic/拍卖.png" class="midIcon"></image>
+     <text class="midText">定时拍卖</text>
+  </view>
+  </view>
+</view>
+
+<!-- 商品栏 -->
+<view class='list'>
+  <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item">
+  <view class="list_item">
+      <navigator url='../detail/detail?id={{item.goods_id}}'>
+      <view class='img'>
+        <image src="{{imghref}}{{item.goods_img}}"  mode="scaleToFill"/>
+      </view>
+      <view class='info'>
+        <view class='title'>{{item.goods_title}}</view>
+        <view class='price'>￥{{item.goods_price}}</view>
+        <view class='num'>销量{{item.goods_xiaoliang}}</view>
+      </view>
+       </navigator>
+      <view class='clear'></view>
+  </view>
+  </block>
+</view>
