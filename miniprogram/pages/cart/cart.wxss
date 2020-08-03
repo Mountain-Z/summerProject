@@ -10,7 +10,7 @@
 
 .container-box1 {
   width: 100%;
-  height: 95px;
+  height: 190rpx;
   background-color: rgba(153, 153, 153, 1);
   margin-top: 0px;
   box-sizing: border-box;
@@ -19,7 +19,7 @@
 
 .container-box {
   width: 100%;
-  height: 95px;
+  height: 190rpx;
   background-color: rgba(153, 153, 153, 1);
   margin-top: 10px;
   box-sizing: border-box;
@@ -27,12 +27,12 @@
 }
 
 .goodslist {
-  margin-top: 10px;
+  margin-top: 20rpx;
 }
 
 .choocegoods {
-  margin-top: 25px;
-  margin-left: 5px;
+  margin-top: 50rpx;
+  margin-left: 10rpx;
   width: auto;
   height: auto;
   display: inline-block;
@@ -44,9 +44,9 @@ checkbox {
 }
 
 .goodspic {
-  width: 75px;
-  margin-left: 20px;
-  margin-top: 0px;
+  width: 150rpx;
+  margin-left: 40rpx;
+  margin-top: 0rpx;
   display: inline-block;
   position: absolute;
 }
@@ -55,45 +55,45 @@ checkbox {
 */
 .goodsname {
   background-color: rgba(229, 229, 229, 1);
-  width: 200px;
+  width: 400rpx;
   float: right;
-  margin-right: 30px;
-  margin-top: 0px;
-  font-size: 12px;
+  margin-right: 60rpx;
+  margin-top: 0rpx;
+  font-size: 24rpx;
   overflow: hidden;
 }
 
 .goodsname1 {
   background-color: rgba(229, 229, 229, 1);
-  width: 200px;
+  width: 400rpx;
   float: right;
-  margin-right: 30px;
-  margin-top: 12px;
-  font-size: 12px;
+  margin-right: 60rpx;
+  margin-top: 24rpx;
+  font-size: 24rpx;
   overflow: hidden;
 }
 
 .goodsprice {
   background-color: rgba(229, 229, 229, 1);
-  width: 30px;
+  width: 60rpx;
   float: right;
-  margin-right: -30px;
-  margin-top: 40px;
-  font-size: 12px;
+  margin-right: -60rpx;
+  margin-top: 80rpx;
+  font-size: 24rpx;
   overflow: hidden;
 }
 
 .billbox {
   background-color: rgba(153, 153, 153, 1);
-  height: 50px;
+  height: 100rpx;
   bottom: 0;
   position: fixed;
   width: 100%;
 }
 
 .chooseall {
-  margin-top: 10px;
-  margin-left: 5px;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
   display: inline-block;
   position: absolute;
 }
@@ -101,16 +101,16 @@ checkbox {
 .choosealltip {
   display: inline-block;
   position: absolute;
-  margin-left: 35px;
-  margin-top: 12px;
+  margin-left: 70rpx;
+  margin-top: 24rpx;
 }
 
 .billpricebox {
-  width: 90px;
+  width: 180rpx;
   background-color: rgba(204, 204, 204, 1);
-  margin-left: 190px;
-  margin-top: 10px;
-  font-size: 12px;
+  margin-left: 380rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
 }
 
 .billprice {
@@ -123,45 +123,45 @@ checkbox {
 
 .paybutton {
   background-color: rgba(255, 87, 51, 1);
-  margin-top: -19px;
+  margin-top: -38rpx;
   right: 0;
   position: fixed;
   text-align: center;
-  font-size: 13px;
+  font-size: 26rpx;
   border: none;
-  border-radius: 2px;
+  border-radius: 4rpx;
 }
 
 /*数量加减框*/
 /*主容器*/
 .stepper {
-  width: 80px;
-  height: 20px;
+  width: 160rpx;
+  height: 40rpx;
   float: right;
-  margin-right: -200px;
-  margin-top: 37px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  margin-right: -400rpx;
+  margin-top: 74rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 6rpx;
 }
 
 /*加号和减号*/
 .stepper text {
   float: left;
-  width: 19px;
-  line-height: 20px;
+  width: 38rpx;
+  line-height: 40rpx;
   text-align: center;
 }
 
 /*数值*/
 .stepper input {
-  width: 40px;
-  height: 20px;
+  width: 80rpx;
+  height: 40rpx;
   float: left;
   margin: 0 auto;
   text-align: center;
-  font-size: 12px;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  font-size: 24rpx;
+  border-left: 2rpx solid #ccc;
+  border-right: 2rpx solid #ccc;
 }
 
 /*普通样式*/
