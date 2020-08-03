@@ -1,2 +1,13 @@
-<!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<scroll-view scroll-x class = 'scroll' enable-flex>
+		<block wx:for='{{subTitle}}' wx:key="index">
+			<view class="subtitle {{currentIndex==index ? 'isactive':''}}" bind:tap="handleindex" data-index="{{index}}">
+				<text>{{item}}</text>
+			</view>
+		</block>
+</scroll-view>
+
+<block wx:for="{{pages[currentIndex]}}" wx:key="index">
+	<order-item index='{{currentIndex}}' detail="{{item}}"/>
+</block>
+
+

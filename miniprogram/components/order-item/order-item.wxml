@@ -1,0 +1,12 @@
+<view class="wrapper">
+	<view class="content">
+		<image class="img" src="{{detail.goods_img}}" mode='heightFix'></image>
+		<view class='detail'>{{detail.goods_title}}</view>
+		<view class='price'>￥{{detail.goods_price}}</view>
+	</view>
+	<view class='btnBottom'>
+		<view class="btn1">{{btnTitle[index][2]}}</view>
+		<view class="btn">{{btnTitle[index][1]}}</view>
+		<view class="btn">{{btnTitle[index][0]}}</view>
+	</view>
+</view>
