@@ -1,2 +1,51 @@
 <!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view class="container">
+	<!--购物车内商品boxTop-->
+	<view class="container-box1">
+		<view class="goodslist">
+			<view class="choocegoods">
+				<checkbox>
+				</checkbox>
+			</view>
+			<view class="goodspic">
+				<image src="../../images/cart/pic1.png" mode="widthFix" class="goodspic"></image>
+			</view>
+			<view class="goodsname">
+				<text>产品名称</text>
+			</view>
+			<view class="goodsname1">
+				<text>套装</text>
+			</view>
+			<view class="goodsprice">
+				<text>价格</text>
+			</view>
+			<view class='stepper'>
+				<text class='{{minusStatus}}' type='number'  bindtap='bindMinus'>-</text>
+				<input bindinput='bindManual' value='{{num}}'></input>
+				<text bindtap='bindPlus'>+</text>
+			</view>
+		</view>
+	</view>
+
+	<!--底部购物车-->
+	<view class="billbox">
+		<view class="chooseall">
+			<checkbox></checkbox>
+		</view>
+		<view class="choosealltip">
+			<text>全选</text>
+		</view>
+		<view class="billpricebox">
+			<view class="billprice">
+				<text>合计：XXXX</text>
+			</view>
+			<view class="billPriceTip">
+				<text>不含运费</text>
+			</view>
+		</view>
+		<view class="paybutton">
+			<button style="width:90px;height:33px" class="paybutton">结算</button>
+		</view>
+	</view>
+
+</view>

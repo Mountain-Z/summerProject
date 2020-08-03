@@ -1,1 +1,175 @@
 /* pages/cart/cart.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-size: 100%;
+  background: #ECF1EE;
+  display: inline-block
+}
+
+.container-box1 {
+  width: 100%;
+  height: 95px;
+  background-color: rgba(153, 153, 153, 1);
+  margin-top: 0px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.container-box {
+  width: 100%;
+  height: 95px;
+  background-color: rgba(153, 153, 153, 1);
+  margin-top: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.goodslist {
+  margin-top: 10px;
+}
+
+.choocegoods {
+  margin-top: 25px;
+  margin-left: 5px;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  position: absolute;
+}
+
+checkbox {
+  transform: scale(0.8, 0.8);
+}
+
+.goodspic {
+  width: 75px;
+  margin-left: 20px;
+  margin-top: 0px;
+  display: inline-block;
+  position: absolute;
+}
+
+/*https://www.cnblogs.com/chaozhang/p/4711282.html
+*/
+.goodsname {
+  background-color: rgba(229, 229, 229, 1);
+  width: 200px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 0px;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.goodsname1 {
+  background-color: rgba(229, 229, 229, 1);
+  width: 200px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 12px;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.goodsprice {
+  background-color: rgba(229, 229, 229, 1);
+  width: 30px;
+  float: right;
+  margin-right: -30px;
+  margin-top: 40px;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.billbox {
+  background-color: rgba(153, 153, 153, 1);
+  height: 50px;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.chooseall {
+  margin-top: 10px;
+  margin-left: 5px;
+  display: inline-block;
+  position: absolute;
+}
+
+.choosealltip {
+  display: inline-block;
+  position: absolute;
+  margin-left: 35px;
+  margin-top: 12px;
+}
+
+.billpricebox {
+  width: 90px;
+  background-color: rgba(204, 204, 204, 1);
+  margin-left: 190px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.billprice {
+  text-align: left;
+}
+
+.billPriceTip {
+  text-align: right;
+}
+
+.paybutton {
+  background-color: rgba(255, 87, 51, 1);
+  margin-top: -19px;
+  right: 0;
+  position: fixed;
+  text-align: center;
+  font-size: 13px;
+  border: none;
+  border-radius: 2px;
+}
+
+/*数量加减框*/
+/*主容器*/
+.stepper {
+  width: 80px;
+  height: 20px;
+  float: right;
+  margin-right: -200px;
+  margin-top: 37px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/*加号和减号*/
+.stepper text {
+  float: left;
+  width: 19px;
+  line-height: 20px;
+  text-align: center;
+}
+
+/*数值*/
+.stepper input {
+  width: 40px;
+  height: 20px;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/*普通样式*/
+.stepper .normal {
+  color: black;
+}
+
+/*禁用样式*/
+.stepper .disable {
+  color: #ccc;
+}
