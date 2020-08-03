@@ -1,3 +1,4 @@
+<!-- 导航栏 -->
 <scroll-view scroll-x class = 'scroll' enable-flex>
 		<block wx:for='{{subTitle}}' wx:key="index">
 			<view class="subtitle {{currentIndex==index ? 'isactive':''}}" bind:tap="handleindex" data-index="{{index}}">
@@ -5,9 +6,11 @@
 			</view>
 		</block>
 </scroll-view>
-
-<block wx:for="{{pages[currentIndex]}}" wx:key="index">
-	<order-item index='{{currentIndex}}' detail="{{item}}"/>
-</block>
-
+<!-- 购买物品展示 -->
+<view class="order-item">
+	<block wx:for="{{pages[currentIndex]}}" wx:key="index">
+		<!-- 更具传入数据展示订单 当前仅写了全部和待付款的订单展示 -->
+		<order-item currentIndex='{{currentIndex}}' index='{{index}}' detail="{{item}}"/>
+	</block>
+</view>
 

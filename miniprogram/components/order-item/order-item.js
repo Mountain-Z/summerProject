@@ -2,6 +2,9 @@
 Component({
 	properties: {
 		index:{
+			type:Number
+		},
+		currentIndex:{
 			type:Number,
 			value:0
 		},
@@ -23,6 +26,12 @@ Component({
 	 * 组件的方法列表
 	 */
 	methods: {
-
+		handleIndex(){
+			console.log(this.properties.index)
+			//将点击订单的index值传送给详情页
+			wx.navigateTo({
+			  url: '../../pages/detail/detail?index='+ this.properties.index,
+			})
+		}
 	}
 })
