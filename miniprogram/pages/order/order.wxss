@@ -1,1 +1,17 @@
-/* pages/order/order.wxss */
+.scroll{
+	display: flex;
+	height: 80rpx;
+	color: rgba(80, 80, 80, 1);
+	font-size: 30rpx;
+	line-height: 80rpx;
+	text-align: center;
+	white-space: nowrap;
+}
+.subtitle{	
+	flex: 1;
+}
+.isactive text{
+	color:rgb(255, 0, 0);
+	border-bottom: 3rpx solid rgb(255, 0, 0);
+	padding-bottom: 3rpx;
+}
