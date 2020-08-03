@@ -1,9 +1,0 @@
-<swiper class='swiper'
-		autoplay="false"
-		interval="1500"
-		circular="false"
-		indicator-dots="true">
-	<block wx:for="{{list}}" wx:key="index">
-		<swiper-item><image src="{{item.image}}" mode="widthFix"></image></swiper-item>
-	</block>
-</swiper>
