@@ -1,1 +1,53 @@
 /* pages/detail/detail.wxss */
+
+.container{
+    display: flex;
+    flex-direction: column; 
+    height: 100vh;
+    }
+.head{
+  text-align: center;
+  background-color:lightgray;
+  width: 375px;
+}
+.swiper{
+  width: 100%;
+}
+.item{
+  width: 100%;
+}
+.body{
+   display: flex;
+   flex-direction: column;
+   background-color: white;
+}
+.name{
+  height: 50px;
+  text-align: left;
+  background-color: white;
+  border-bottom: 5px;
+}
+.price{
+  height: 30px;
+  text-align: left;
+  background-color: white;
+}
+.freight{
+  height: 30px;
+  text-align: left;
+  background-color: white;
+}
+.size{
+  height: 30px;
+  text-align: left;
+  background-color: white;
+} 
+.foot{
+  display: flex;
+  flex-direction: row;
+  background-color:white;
+  height: 40px;
+  position: fixed;
+  bottom:0px;
+  width: 100%;
+}
