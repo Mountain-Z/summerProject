@@ -1,6 +1,9 @@
 // components/order-item/order-item.js
 Component({
 	properties: {
+		goodsId:{
+			type:Number
+		},
 		index:{
 			type:Number
 		},
@@ -27,10 +30,10 @@ Component({
 	 */
 	methods: {
 		handleIndex(){
-			console.log(this.properties.index)
+			console.log(this.properties.goodsId)
 			//将点击订单的index值传送给详情页
 			wx.navigateTo({
-			  url: '../../pages/detail/detail?index='+ this.properties.index,
+			  url: '../../pages/detail/detail?goodsId='+ this.properties.goodsId,
 			})
 		}
 	}

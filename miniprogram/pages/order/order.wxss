@@ -15,3 +15,14 @@
 	border-bottom: 3rpx solid rgb(255, 0, 0);
 	padding-bottom: 3rpx;
 }
+
+.orderEmpty{
+	margin-top: 50%;
+	color: #797979;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+.orderEmpty image{
+	width: 100px;
+	height: 100px;
+}

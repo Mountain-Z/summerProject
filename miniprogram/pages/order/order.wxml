@@ -6,11 +6,20 @@
 			</view>
 		</block>
 </scroll-view>
-<!-- 购买物品展示 -->
-<view class="order-item">
-	<block wx:for="{{pages[currentIndex]}}" wx:key="index">
-		<!-- 更具传入数据展示订单 当前仅写了全部和待付款的订单展示 -->
-		<order-item currentIndex='{{currentIndex}}' index='{{index}}' detail="{{item}}"/>
-	</block>
-</view>
 
+<!-- 购买物品展示 -->
+
+<view wx:if='{{goodsDetail}}'>
+	<view class="order-item">
+		<block wx:for="{{pages[currentIndex]}}" wx:key="index">
+
+			<order-item currentIndex='{{currentIndex}}' goodsId='{{item.goods_id}}' detail="{{item}}"/>
+		</block>
+	</view>
+</view>
+<view wx:else>
+	<view class="orderEmpty">
+		<image src="../../images/order.png"></image>
+		<view>您还没有相关订单哦</view>
+	</view>
+</view>
