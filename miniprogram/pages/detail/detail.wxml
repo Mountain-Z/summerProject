@@ -1,0 +1,37 @@
+<!--pages/detail/detail.wxml-->
+
+<view class="container">
+  <view class="head">商品详情</view>
+<swiper class="swiper" circular="true" autoplay="true" interval="3000" duration="300" indicator-dots="true">
+  <swiper-item class="item"><image src="./素材/图片1.png" style="width:375px;"></image></swiper-item>
+  <swiper-item class="item"><image src="./素材/图片2.png" style="width:375px;"></image></swiper-item>
+  <swiper-item class="item"><image src="./素材/图片3.png" style="width:375px;"></image></swiper-item>
+</swiper>
+  <view class="body">
+    <view class="name">
+    <text space="nbsp">商品名称                                                               </text>
+    </view>                                                                                 
+    <view class="price">价格</view>
+    <view class="freight">运费</view>
+    <view class="size">规格</view>
+  </view>
+  <view>
+   <scroll-view scroll-y style="height:300px;">
+   商品介绍
+   <image src="./素材/商品介绍.png" style="width:750rpx;"></image>
+   <image src="./素材/商品介绍.png" style="width:750rpx;"></image>
+   </scroll-view>  
+  </view>
+</view>
+  <view class="foot">
+    <navigator url="/pages/index/index" open-type="switchTab">
+    <button size="mini" type="primary"><text>首页</text></button></navigator>
+    <navigator url="/pages/" open-type="switchTab">
+    <button size="mini" type="primary"><text>客服</text></button></navigator>
+    <navigator url="/pages/cart/cart" open-type="switchTab">
+    <button size="mini" type="primary"><text>购物车</text></button></navigator>
+    <button size="mini" type="warn"><text>加入</text></button> 
+    <button size="mini" type="warn"><text>购买</text> </button>
+  </view>
+
+
