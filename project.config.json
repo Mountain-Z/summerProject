@@ -27,6 +27,7 @@
 	"libVersion": "2.8.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -67,7 +68,7 @@
 					"id": -1,
 					"name": "pages/order/order",
 					"pathName": "pages/order/order",
-					"scene":null
+					"scene": null
 				}
 			]
 		}

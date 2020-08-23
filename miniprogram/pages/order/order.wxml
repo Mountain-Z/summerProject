@@ -1,0 +1,31 @@
+
+<!-- 导航栏 -->
+<scroll-view scroll-x class = 'scroll' enable-flex>
+		<block wx:for='{{subTitle}}' wx:key="index">
+			<view class="subtitle {{currentIndex==index ? 'isactive':''}}" bind:tap="handleindex" data-index="{{index}}">
+				<text>{{item}}</text>
+			</view>
+		</block>
+</scroll-view>
+
+<!-- 购买物品展示 -->
+
+<view wx:if='{{goodsDetail}}'>
+	<view class="order-item">
+		<block wx:for="{{pages[currentIndex]}}" wx:key="index">
+			<order-item currentIndex='{{currentIndex}}' goodsId='{{item.goods_id}}' detail="{{item}}"/>
+		</block>
+	</view>
+</view>
+
+<view wx:else>
+	<view class="orderEmpty">
+		<image src="../../images/order.png"></image>
+		<view>您还没有相关订单哦</view>
+	</view>
+</view>
+
+
+
+
+<view>{{openID}}</view>
