@@ -15,7 +15,7 @@
 <view class="scroll" hidden="{{hidden}}">
 	<scroll-view class="scroll" scroll-y="true">
 		<view class="separate"></view>
-		<view wx:for="{{carts}}" wx:key='index'>
+		<block wx:for="{{carts}}" wx:key='index'>
 			<view class="cart_container">
 				<view wx:if="{{!item.isSelect}}">
 					<icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}" type="circle" size="20"></icon>
@@ -24,7 +24,7 @@
 					<icon class="item-select" bindtap="switchSelect" data-index="{{index}}" data-id="{{index}}" type="success" color="#f0145a" size="20"></icon>
 				</view>
 
-				<image class="item-image" src="{{item.imgUrl}}"></image>
+				<image class="item-image" src="{{item.imageUrl}}"></image>
 				<import src="../template/template.wxml" />
 				<view class="column">
 					<text class="title">{{item.title}}</text>
@@ -39,7 +39,7 @@
 				</view>
 			</view>
 			<view class="separate"></view>
-		</view>
+		</block>
 	</scroll-view>
 </view>
 <view class="bottom_total" hidden="{{hidden}}">
@@ -58,7 +58,7 @@
 		<text class="price">{{totalMoney}}</text>
 		<!--    <button class="button-red" bindtap="testSQL" formType="submit">去结算      </button>
 -->
-		<button class="button-red" bindtap="toBuy" formType="submit">去结算 </button>
+		<view class="button-red" bindtap="toBuy" formType="submit">结算 </view>
 
 	</view>
 </view>

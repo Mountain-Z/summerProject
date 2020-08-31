@@ -10,12 +10,6 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
 		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
@@ -29,7 +23,10 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wx52c63d8e7c4a0908",
 	"projectname": "%E5%A3%B0%E5%8A%A8%E5%95%86%E5%9F%8E",
@@ -77,6 +74,27 @@
 					"id": -1,
 					"name": "pages/order/order",
 					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/profile/profile",
+					"pathName": "pages/profile/profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/addressList/addressList",
+					"pathName": "pages/addressList/addressList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cart/cart",
+					"pathName": "pages/cart/cart",
 					"scene": null
 				}
 			]

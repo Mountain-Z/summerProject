@@ -1,7 +1,7 @@
 //app.js
 
 App({
-  onLaunch: async function () {
+  onLaunch: function () {
 
     if (!wx.cloud) {
 
@@ -29,26 +29,28 @@ App({
       success: (res) => {
         if (res.code) {
           //发起网络请求
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session',
-            data: {
-              appid: 'wx52c63d8e7c4a0908',
-              secret: 'cb1bbf7bad37147a4ec3cf15390a4923',
-              js_code: res.code,
-              grant_type: 'authorization_code'
+
+          wx.cloud.callFunction({
+            name:'getOpenId',
+            data:{
+              code:res.code
             },
-            method: 'GET',
-            success: (res) => {
+            success:(res) => {
               console.log(res)
-              wx.setStorageSync('openID', res.data.openid)
+              wx.setStorageSync('openId', res.result.openid)
             }
           })
+
+
+         
         } else {
           console.log('登录失败！' + res.errMsg)
         }
       }
 
     })
+
+    this.globalData = {}
   },
 
 })

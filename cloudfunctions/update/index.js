@@ -12,12 +12,12 @@ exports.main = async (event, context) => {
 	let collect = event.collection
 	try{
 		return await db.collection(collect).where({
-			_openid:event.openID,
-			status:event.status,
-			goodsID:event.goodsID
+			_openid:event.openId,
+			goodsId:event.goodsId
 		}).update({
 			data:{
-				count:event.count
+				count:event.count,
+				orderStatus:event.status
 			}
 		})
 	}catch(err){

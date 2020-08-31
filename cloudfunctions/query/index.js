@@ -12,7 +12,9 @@ exports.main = async (event, context) => {
 	let collect = event.collection
 	try{
 		return await db.collection(collect).where({
-			'_openid':event.openID
+			'_openid':event.openID,
+			'goodsId':event.goodsId,
+			'orderStatus':3
 		}).get()
 	}catch(err){
 		console.log(err)

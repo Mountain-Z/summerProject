@@ -1,2 +1,26 @@
-<!--pages/profile/profile.wxml-->
-<text>pages/profile/profile.wxml</text>
+<view class="head1">
+<!-- <image class="img1"  src="/miniprogram/images/微信 (1).png" mode="cover" ></image>
+<button>登录</button> -->
+<view  class="userinfo" wx:if="{{!hasUserInfo && canIUse}}">
+  <image class="img1" src="../../images/微信登录.png" mode="width"></image>
+  <button size="mini" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+</view>
+<view class="userinfo"  wx:else>
+  <image  class="img1" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <text class="txet">{{userInfo.nickName}}</text>
+</view>
+</view>
+
+<!-- <view class="div-line"></view> -->
+<view class="body3">
+ <block wx:for="{{menuitems}}" wx:key="item">
+      <navigator url="{{item.url}}" class="body3a" hover-class="body3b">
+        <view class='body3c'>
+        <image class='item-image' src='{{item.imgurl}}'></image>
+          <text class="body3d">{{item.text}}</text>
+          <text class='body3e'>></text>
+        </view>
+          <view class="div-line"></view>
+       </navigator>
+       </block>
+</view>

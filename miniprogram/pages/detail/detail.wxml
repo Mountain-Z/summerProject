@@ -1,37 +1,72 @@
-<!--pages/detail/detail.wxml-->
 
-<view class="container">
-  <view class="head">商品详情</view>
-<swiper class="swiper" circular="true" autoplay="true" interval="3000" duration="300" indicator-dots="true">
-  <swiper-item class="item"><image src="./素材/图片1.png" style="width:375px;"></image></swiper-item>
-  <swiper-item class="item"><image src="./素材/图片2.png" style="width:375px;"></image></swiper-item>
-  <swiper-item class="item"><image src="./素材/图片3.png" style="width:375px;"></image></swiper-item>
+<swiper class="swiper" 
+        circular="true" 
+        autoplay="true" 
+        interval="3000" 
+        duration="300" 
+        indicator-dots="true">
+  <block wx:for='{{goodsItems.goodsDetail}}' wx:key='index'>
+      <swiper-item >
+        <image src= '{{item}}' mode="width" class="imgItem"></image> 
+      </swiper-item>
+  </block> 
 </swiper>
-  <view class="body">
-    <view class="name">
-    <text space="nbsp">商品名称                                                               </text>
-    </view>                                                                                 
-    <view class="price">价格</view>
-    <view class="freight">运费</view>
-    <view class="size">规格</view>
+
+<view class="goodsDetail">
+  <view class="name">
+    {{goodsItems.goodsTitle}}
   </view>
-  <view>
-   <scroll-view scroll-y style="height:300px;">
-   商品介绍
-   <image src="./素材/商品介绍.png" style="width:750rpx;"></image>
-   <image src="./素材/商品介绍.png" style="width:750rpx;"></image>
-   </scroll-view>  
-  </view>
+  <view class="price">价格:{{goodsItems.goodsPrice}}</view>
+  <view class="sail">销量:{{goodsItems.goodsSail}}</view>
 </view>
-  <view class="foot">
-    <navigator url="/pages/index/index" open-type="switchTab">
-    <button size="mini" type="primary"><text>首页</text></button></navigator>
-    <navigator url="/pages/" open-type="switchTab">
-    <button size="mini" type="primary"><text>客服</text></button></navigator>
-    <navigator url="/pages/cart/cart" open-type="switchTab">
-    <button size="mini" type="primary"><text>购物车</text></button></navigator>
-    <button size="mini" type="warn"><text>加入</text></button> 
-    <button size="mini" type="warn"><text>购买</text> </button>
-  </view>
+
+<view class="showDetail">
+  <block wx:for='{{goodsItems.goodsDetail}}' wx:key='index'>
+      <image src= '{{item}}' mode="width" class="imgItem"></image> 
+  </block>
+</view>
+
+<view class="foot">
+
+  <navigator url="/pages/index/index" open-type="switchTab">
+    <view class='icon'>
+        <image mode='width' src="../../images/index_active.png"></image>
+        <view>首页</view>
+    </view>
+  </navigator>
+
+  <navigator url="/pages/" open-type="switchTab">
+    <view class='icon'>
+        <image mode='width' src="../../images/service.png"></image>
+        <view>客服</view>
+    </view>
+  </navigator>
+
+  <navigator url="/pages/cart/cart" open-type="switchTab">
+
+      <view class='icon'>
+        <image mode='width' src="../../images/cart_active.png">
+        </image>
+        <view>购物车</view>
+           
+      </view>
+
+  </navigator>
+
+
+    <view bind:tap='postGoodsId' class="putsCart">
+      <text>添加购物车</text>
+    </view> 
+    <view class="Buy" bind:tap='toBuy'>
+      <text>立即购买</text> 
+    </view>
+ 
+
+</view>
+
+
+
+
+
 
 

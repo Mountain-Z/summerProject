@@ -21,8 +21,10 @@
 	float: left;
 	margin: 0 20rpx;
 	width: 340rpx;
-	height: 158rpx;
-	font-size: 28rpx;
+	height: 158rpx;  
+	overflow: hidden;
+	text-overflow:ellipsis;
+	font-size: 26rpx;
 	color: rgba(80, 80, 80, 1);
 }
 .price{

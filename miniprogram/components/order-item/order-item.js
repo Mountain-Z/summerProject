@@ -33,7 +33,7 @@ Component({
 			console.log(this.properties.goodsId)
 			//将点击订单的index值传送给详情页
 			wx.navigateTo({
-			  url: '../../pages/detail/detail?goodsId='+ this.properties.goodsId,
+			  url: '../../pages/detail/detail?id='+ this.properties.detail.goodsId,
 			})
 		}
 	}

@@ -1,11 +1,12 @@
 <!-- 详情 -->
 <view class="wrapper">
 	<view class="content" bind:tap="handleIndex">
+
+			<image class="img" src="{{detail.imageUrl}}" mode='heightFix'></image>
+			<view class='detail'>{{detail.title}}</view>
+			<view class='price'>￥{{detail.price*detail.count}}</view>
 		
-			<image class="img" src="{{detail.goods_img}}" mode='heightFix'></image>
-			<view class='detail'>{{detail.goods_title}}</view>
-			<view class='price'>￥{{detail.goods_price}}</view>
-		
+
 	</view>
 	<!-- 按钮 -->
 	<view class='btnBottom'>
@@ -14,3 +15,5 @@
 		<view class="btn">{{btnTitle[currentIndex][0]}}</view>
 	</view>
 </view>
+
+

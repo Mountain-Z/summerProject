@@ -1,1 +1,90 @@
-/* pages/profile/profile.wxss */
+.head1{
+  width: 100%;
+  height: 350rpx;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.body1{
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.body2{
+  display: flex;
+  width: 100%;
+  height: 200rpx;
+}
+.body3{
+  width: 100%;
+}
+.img1{
+  width: 150rpx;
+  height: 150rpx;
+  margin: 30rpx;
+  border-radius: 50%;
+}
+.userinfo {
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+ flex-direction: column;
+  align-items: center;
+  position: fixed;
+}
+.seeall{
+  padding-right: 1em;
+}
+.nav-item {  
+  width: 25%;  
+  display: flex;  
+  align-items: center;  
+  flex-direction: column;  
+  padding: 20rpx;
+}
+.nav-item .nav-image {  
+  width: 80rpx;  
+  height: 80rpx;  
+  margin: 5rpx;
+}
+.nav-item text {  
+  margin-top: 20rpx;  
+  font-size: 35rpx;  
+  color: gray;
+}
+
+.body3a{
+  width: 100%;
+  height: 120rpx;
+}
+.body3b{
+  background-color: #E0E3DA;
+}
+.body3c{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 120rpx;
+}
+.body3d{
+  position: fixed;
+  left: 100rpx;
+  font-size: 38rpx;
+}
+.body3e{
+  position: fixed;
+  right: 50rpx;
+  font-size: 38rpx;
+}
+.div-line{
+  background: #E0E3DA;
+  width: 100%;
+  height: 3rpx;
+}
+.item-image {
+  position: fixed;
+  left: 20rpx;
+  width: 70rpx;
+  height: 70rpx;
+}

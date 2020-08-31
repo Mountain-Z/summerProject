@@ -1,4 +1,3 @@
-// pages/cart/cart.js
 Page({
 
   /**
@@ -13,6 +12,10 @@ Page({
     isAllSelect: false,
     totalMoney: 0,
     id: '75c568195f3e0dad002542fa5c1e98b7',
+    openId:null,
+    quantity:1,
+    componentId:0,
+    count:1
   },
 
   /**
@@ -41,12 +44,30 @@ Page({
     const db = wx.cloud.database({});
     const _ = db.command;
     //对userid要判断吗--------------------------------------------where-----
-    const cont = db.collection('userInfo').doc(this.data.id).get().then(res => {
-      console.log(res.data.carts)
+    // const cont = db.collection('userInfo').doc(this.data.id).get().then(res => {
+    //   console.log(res.data.carts)
+    //   this.setData({
+    //     carts: res.data.carts
+    //   })
+    // })
+    
+    const openId = wx.getStorageSync('openId')
+
+    this.setData({
+      openId
+    })
+
+    db.collection('userInfo').where({
+      _openid:openId,
+      orderStatus:0
+    }).get().then((res) => {
+      console.log(res)
       this.setData({
-        carts: res.data.carts
+        carts:res.data
       })
     })
+
+
     //  console.log('Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'+this.data.carts+'end');
     // 有数据的话，就遍历数据，计算总金额 和 总数量  
 
@@ -128,30 +149,53 @@ Page({
   // 去结算
   toBuy() {
     wx.showToast({
-      title: '去结算',
+      title: '结算成功',
       icon: 'success',
-      duration: 3000
+      duration: 3000,
+      mask:true
     });
     this.setData({
       showDialog: !this.data.showDialog
     });
     console.log(this.data.order);
     console.log(this.data.unselected);
+    console.log(this.data.componentId);
+    console.log(this.data.quantity);
+    console.log(this.data.carts[this.data.componentId].goodsId);
+    
+
+    wx.cloud.callFunction({
+      name:'update',
+      data:{
+        collection:'userInfo',
+        openId:this.data.openId,
+        goodsId:this.data.carts[this.data.componentId].goodsId,
+        count:this.data.count,
+        status:3
+      },
+      success:(res) => console.log(res),
+      fail:(err) => console.log(err)
+    })
+
+
 
     // 更新data数据对象  
-    let db = wx.cloud.database()
-    const _ = db.command;
+    // let db = wx.cloud.database()
+    // const _ = db.command;
 
-    db.collection('userInfo').doc(this.data.id).update({
-      data: {
-        carts: _.set(this.data.unselected)
-      }
-    })
-    db.collection('userInfo').doc(this.data.id).update({
-      data: {
-        order: _.push(this.data.order)
-      }
-    })
+
+
+
+    // db.collection('userInfo').doc(this.data.id).update({
+    //   data: {
+    //     carts: _.set(this.data.unselected)
+    //   }
+    // })
+    // db.collection('userInfo').doc(this.data.id).update({
+    //   data: {
+    //     order: _.push(this.data.order)
+    //   }
+    // })
     this.setData({
       carts: this.data.unselected
     });
@@ -164,6 +208,8 @@ Page({
     this.data.carts[componentId].count.quantity = quantity;
     this.setData({
       carts: this.data.carts,
+      quantity,
+      componentId
     });
   },
   /* 减数 */
@@ -201,7 +247,8 @@ Page({
     }
     // 将数值与状态写回  
     this.setData({
-      carts: this.data.carts
+      carts: this.data.carts,
+      count
     });
 
     let db = wx.cloud.database()
@@ -254,39 +301,4 @@ Page({
     }
   },
 
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
