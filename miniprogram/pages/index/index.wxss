@@ -58,8 +58,9 @@ navigator{
 }
 .list .list_item .img{
   float:left;
-  width:40%;
+  width:30%;
   height:100%;
+  overflow: hidden;
 }
 .list .list_item .img image{
    width:100%;
@@ -67,7 +68,7 @@ navigator{
 }
  
 .list .list_item .info{
-  width:59%;
+  width:69%;
   float:right;
   height:200rpx;
   position:relative;

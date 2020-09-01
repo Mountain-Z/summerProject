@@ -38,9 +38,8 @@
 }
 
 .price{
-  margin-left: 26rpx;
-  
-    margin-top: 40rpx ;
+    margin-left: 26rpx;
+    margin-top: 20rpx ;
     height: 50rpx;
 
  

@@ -12,34 +12,34 @@
 <!-- 中间的八个按钮盒子 -->
 <view class="midBox" bindtap="testSQL">
   <view class="midModular" bindtap="clickBox" id="memberReach">
-     <image src="pic/会员触达.png" class="midIcon"></image>
+     <image src="pic/vip.png" class="midIcon"></image>
      <text class="midText">会员触达</text>
   </view>
   <view class="midModular" bindtap="clickBox" id="commodityManagement">
-     <image src="pic/商品管理.png" class="midIcon"></image>
+     <image src="pic/goodsManage.png" class="midIcon"></image>
      <text class="midText">商品管理</text>
   </view>
   <view class="midModular" bindtap="clickBox" id="bargainingForYou">
-     <image src="pic/砍价.png" class="midIcon"></image>
+     <image src="pic/bargain.png" class="midIcon"></image>
      <text class="midText">帮你砍价</text>
   </view>
     <view class="midModular" bindtap="clickBox" id="voiceRedPacket">
-     <image src="pic/语音红包.png" class="midIcon"></image>
+     <image src="pic/voice.png" class="midIcon"></image>
      <text class="midText">语音红包</text>
   </view>
   <view class="midModular" bindtap="clickBox" id="timedSeconds">
-     <image src="pic/秒杀.png" class="midIcon"></image>
+     <image src="pic/crush.png" class="midIcon"></image>
      <text class="midText">定时秒杀</text>
   </view>
   <view class="midModular" bindtap="clickBox" id="privilegeManagement">
-     <image src="pic/特权管理.png" class="midIcon"></image>
+     <image src="pic/property.png" class="midIcon"></image>
      <text class="midText">特权管理</text>
   </view>
   <view class="midModular" bindtap="clickBox" id="pointsMall">
-     <image src="pic/积分商城.png" class="midIcon"></image>
+     <image src="pic/shop.png" class="midIcon"></image>
      <text class="midText">积分商城</text>
   <view class="midModular" bindtap="clickBox" id="timeAuction">
-     <image src="pic/拍卖.png" class="midIcon"></image>
+     <image src="pic/auction.png" class="midIcon"></image>
      <text class="midText">定时拍卖</text>
   </view>
   </view>
@@ -51,7 +51,7 @@
   <view class="list_item">
       <navigator url='../detail/detail?id={{item.goodsId}}'>
       <view class='img'>
-        <image src="{{item.imageUrl}}"  mode="scaleToFill"/>
+        <image src="{{item.imageUrl}}"  mode="aspectFit"/>
       </view>
       <view class='info'>
         <view id='title'>{{item.goodsTitle}}</view>
