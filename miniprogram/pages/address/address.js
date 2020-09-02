@@ -181,21 +181,37 @@ Page({
     var cityName = e.detail.value.cityName;
     var countyName = e.detail.value.countyName;
     var address = e.detail.value.address;
-
-    console.log(transportDay + "," + provinceName + "," + cityName + "," + countyName + "," + address); //输出该文本 
-
     var arr = wx.getStorageSync('addressList') || [];
-    console.log("arr,{}", arr);
-    addressList = {
-      consignee: consignee,
-      mobile: mobile,
-      address: provinceName + cityName + countyName+address,
-      transportDay: transportDay
-    }
+
+    if(consignee.length == 0){
+      wx.showModal({
+        content:'收货人未填',
+        showCancel:false,
+      })
+    }else if(mobile.length == 0){
+      wx.showModal({
+        content:'电话未填',
+        showCancel:false,
+      })
+    }else{
+      addressList = {
+        consignee: consignee,
+        mobile: mobile,
+        address: provinceName + cityName + countyName+address,
+        transportDay: transportDay
+      }
       arr.push(addressList);
-    wx.setStorageSync('addressList', arr);
-    wx.navigateBack({
-      
-    })
+      wx.setStorageSync('addressList', arr);
+      wx.navigateBack({
+        
+      })
+  
+      const db = wx.cloud.database()
+      db.collection('useradress').add({
+        data:{
+          addressList
+        }
+      })
+    }
   }
 })

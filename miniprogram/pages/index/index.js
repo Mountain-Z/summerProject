@@ -38,6 +38,7 @@ Page({
     console.log("点击" + e.currentTarget.id + "，跳转到板块")
   },
 
+
   onLoad: function (options) {
 
     const db = wx.cloud.database({});

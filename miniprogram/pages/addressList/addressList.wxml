@@ -1,6 +1,6 @@
 <scroll-view class="scroll" scroll-y="true">
-  <view wx:for="{{addressList}}">
-    <view class="product-name-wrap">
+  <view wx:for="{{addressList}}" >
+    <view class="product-name-wrap" bindtap="chooseAddress">
       <view class="ui-list-item-info">{{item.consignee}}
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text> {{item.mobile}}
       </view>

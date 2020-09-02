@@ -153,71 +153,101 @@ Page({
   
    
   },
-  // 去结算
-  toBuy() {
 
-    console.log(this.data.carts)
-
-    const isSelect = this.data.carts.some((res) =>{
-      return res.isSelect === true
-    })
-
-    const unselected = this.data.carts.filter((res) =>{
-      return res.isSelect === false
-    })
-    const goodsItems = this.data.carts.filter((res) =>{
-      return res.isSelect === true
-    })
-
-    console.log(unselected)
-    console.log(isSelect)
-
-    if(this.data.isAllSelect || isSelect){
-       
-    wx.showToast({
-      title: '结算成功',
-      icon: 'success',
-      duration: 3000,
-      mask:true
-    });
-
-    this.setData({
-      showDialog: !this.data.showDialog
-    });
-
-    console.log(this.data.carts[this.data.componentId])
-
-  for(let item of goodsItems){
-    wx.cloud.callFunction({
-      name:'update',
-      data:{
-        collection:'userInfo',
-        openId:this.data.openId,
-        goodsId:item.goodsId,
-        status:3
-      },
-      success:(res) => console.log(res),
-      fail:(err) => console.log(err)
-    })
-  }
-    
-
-    this.setData({
-      carts: unselected,
-      totalMoney:0,
-      isAllSelect:false
-    });
-
-    this.onLoad();
-
-    }else{
+  async handleAdress(){
+    return new Promise((resolve,reject) => {
       wx.showModal({
-        title:'错误',
-        content:'未选中任何商品',
-        showCancel:false,
+        title:'收货地址',
+        content:'请选择收货地址',
+        cancelColor: 'cancelColor',
+  
+        success:(res) => {
+          if(res.confirm){
+            wx.navigateTo({
+              url: '../addressList/addressList',
+              events:{
+                handleBuy:(value) => {
+                  resolve(value)
+                }
+              },
+              success:(res) => { 
+              
+              }
+            })
+          }
+        }
+      })
+    })
+  },
+
+  
+  // 去结算
+  async toBuy() {
+
+    let result = await this.handleAdress()
+
+    if(result){
+      const isSelect = this.data.carts.some((res) =>{
+        return res.isSelect === true
+      })
+
+      const unselected = this.data.carts.filter((res) =>{
+        return res.isSelect === false
+      })
+      const goodsItems = this.data.carts.filter((res) =>{
+        return res.isSelect === true
+      })
+
+      console.log(unselected)
+      console.log(isSelect)
+
+      if(this.data.isAllSelect || isSelect){
+        
+      wx.showToast({
+        title: '结算成功',
+        icon: 'success',
+        duration: 3000,
+        mask:true
+      });
+
+      this.setData({
+        showDialog: !this.data.showDialog
+      });
+
+      console.log(this.data.carts[this.data.componentId])
+
+    for(let item of goodsItems){
+      wx.cloud.callFunction({
+        name:'update',
+        data:{
+          collection:'userInfo',
+          openId:this.data.openId,
+          goodsId:item.goodsId,
+          status:3
+        },
+        success:(res) => console.log(res),
+        fail:(err) => console.log(err)
       })
     }
-   
+      
+
+      this.setData({
+        carts: unselected,
+        totalMoney:0,
+        isAllSelect:false
+      });
+
+      this.onLoad();
+
+      }else{
+        wx.showModal({
+          title:'错误',
+          content:'未选中任何商品',
+          showCancel:false,
+        })
+      }
+    }
+
   },
   //数量变化处理
 
