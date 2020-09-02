@@ -10,12 +10,11 @@ Page({
     iscart: true,
     hidden: null,
     isAllSelect: false,
+    isSelect:false,
     totalMoney: 0,
-    id: '75c568195f3e0dad002542fa5c1e98b7',
     openId:null,
     quantity:1,
     componentId:0,
-    count:1
   },
 
   /**
@@ -43,14 +42,6 @@ Page({
   onShow: function () {
     const db = wx.cloud.database({});
     const _ = db.command;
-    //对userid要判断吗--------------------------------------------where-----
-    // const cont = db.collection('userInfo').doc(this.data.id).get().then(res => {
-    //   console.log(res.data.carts)
-    //   this.setData({
-    //     carts: res.data.carts
-    //   })
-    // })
-    
     const openId = wx.getStorageSync('openId')
 
     this.setData({
@@ -63,26 +54,24 @@ Page({
     }).get().then((res) => {
       console.log(res)
       this.setData({
-        carts:res.data
+        carts:res.data,
       })
     })
-
-
-    //  console.log('Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'+this.data.carts+'end');
-    // 有数据的话，就遍历数据，计算总金额 和 总数量  
-
   },
   //勾选事件处理函数  
   switchSelect: function (e) {
     // 获取item项的id，和数组的下标值  
-    var Allprice = 0,
-      i = 0;
-    let id = e.target.dataset.id,
+    let Allprice = 0
+    let i = 0;
+    let id = e.target.dataset.id
+    let index = parseInt(e.target.dataset.index);
 
-      index = parseInt(e.target.dataset.index);
     this.data.carts[index].isSelect = !this.data.carts[index].isSelect;
 
-
+    console.log(this.data.carts)
+  
+    this.data.isSelect = this.data.carts[index].isSelect;
+    
     //价钱统计
     if (this.data.carts[index].isSelect) {
       this.data.totalMoney = this.data.totalMoney + (this.data.carts[index].price * this.data.carts[index].count);
@@ -104,17 +93,18 @@ Page({
       carts: this.data.carts,
       totalMoney: this.data.totalMoney,
       isAllSelect: this.data.isAllSelect,
+      isSelect:this.data.isSelect,
     })
     ///////////////////////////////////////////////
     for (i = 0; i < this.data.carts.length; i++) {
       if (this.data.carts[i].isSelect) {
-       var order = this.data.order;
+       let order = this.data.order;
         order.push(this.data.carts[i]);
         this.setData({
           order: order
         })
       } else {
-        var unselected = this.data.unselected;
+        let unselected = this.data.unselected;
         unselected.push(this.data.carts[i]);
         this.setData({
           unselected: unselected
@@ -125,86 +115,101 @@ Page({
   },
   //全选
   allSelect: function (e) {
-    //处理全选逻辑
-    let i = 0;
-    if (!this.data.isAllSelect) {
-      this.data.totalMoney = 0;
-      for (i = 0; i < this.data.carts.length; i++) {
-        this.data.carts[i].isSelect = true;
-        this.data.totalMoney = this.data.totalMoney + (this.data.carts[i].price * this.data.carts[i].count);
+    if(this.data.carts.length !== 0){
+      //处理全选逻辑
+      let i = 0;
+      if (!this.data.isAllSelect) {
+        this.data.totalMoney = 0;
+        for (i = 0; i < this.data.carts.length; i++) {
+          this.data.carts[i].isSelect = true;
+          this.data.totalMoney = this.data.totalMoney + (this.data.carts[i].price * this.data.carts[i].count);
 
+        }
+      } else {
+        for (i = 0; i < this.data.carts.length; i++) {
+          this.data.carts[i].isSelect = false;
+        }
+        this.data.totalMoney = 0;
       }
-    } else {
-      for (i = 0; i < this.data.carts.length; i++) {
-        this.data.carts[i].isSelect = false;
-      }
-      this.data.totalMoney = 0;
+      this.setData({
+        carts: this.data.carts,
+        isAllSelect: !this.data.isAllSelect,
+        totalMoney: this.data.totalMoney,
+      })
     }
-    this.setData({
-      carts: this.data.carts,
-      isAllSelect: !this.data.isAllSelect,
-      totalMoney: this.data.totalMoney,
-    })
+   
   },
   // 去结算
   toBuy() {
+
+    console.log(this.data.carts)
+
+    const isSelect = this.data.carts.some((res) =>{
+      return res.isSelect === true
+    })
+
+    const unselected = this.data.carts.filter((res) =>{
+      return res.isSelect === false
+    })
+    const goodsItems = this.data.carts.filter((res) =>{
+      return res.isSelect === true
+    })
+
+    console.log(unselected)
+    console.log(isSelect)
+
+    if(this.data.isAllSelect || isSelect){
+       
     wx.showToast({
       title: '结算成功',
       icon: 'success',
       duration: 3000,
       mask:true
     });
+
     this.setData({
       showDialog: !this.data.showDialog
     });
-    console.log(this.data.order);
-    console.log(this.data.unselected);
-    console.log(this.data.componentId);
-    console.log(this.data.quantity);
-    console.log(this.data.carts[this.data.componentId].goodsId);
-    
 
+    console.log(this.data.carts[this.data.componentId])
+
+  for(let item of goodsItems){
     wx.cloud.callFunction({
       name:'update',
       data:{
         collection:'userInfo',
         openId:this.data.openId,
-        goodsId:this.data.carts[this.data.componentId].goodsId,
-        count:this.data.count,
+        goodsId:item.goodsId,
         status:3
       },
       success:(res) => console.log(res),
       fail:(err) => console.log(err)
     })
+  }
+    
 
-
-
-    // 更新data数据对象  
-    // let db = wx.cloud.database()
-    // const _ = db.command;
-
-
-
-
-    // db.collection('userInfo').doc(this.data.id).update({
-    //   data: {
-    //     carts: _.set(this.data.unselected)
-    //   }
-    // })
-    // db.collection('userInfo').doc(this.data.id).update({
-    //   data: {
-    //     order: _.push(this.data.order)
-    //   }
-    // })
     this.setData({
-      carts: this.data.unselected
+      carts: unselected,
+      totalMoney:0,
+      isAllSelect:false
     });
+
     this.onLoad();
+
+    }else{
+      wx.showModal({
+        title:'错误',
+        content:'未选中任何商品',
+        showCancel:false,
+      })
+    }
+   
   },
   //数量变化处理
+
   handleQuantityChange(e) {
-    var componentId = e.componentId;
-    var quantity = e.quantity;
+    let componentId = e.componentId;
+    let quantity = e.quantity;
     this.data.carts[componentId].count.quantity = quantity;
     this.setData({
       carts: this.data.carts,
@@ -214,9 +219,9 @@ Page({
   },
   /* 减数 */
   delCount: function (e) {
-    var index = e.target.dataset.index;
+    let index = e.target.dataset.index;
     console.log("刚刚您点击了加一");
-    var count = this.data.carts[index].count;
+    let count = this.data.carts[index].count;
     // 商品总数量-1
     if (count > 1) {
       this.data.carts[index].count--;
@@ -226,11 +231,10 @@ Page({
       carts: this.data.carts
     });
 
-    let db = wx.cloud.database()
-    const _ = db.command;
-    db.collection('userInfo').doc(this.data.id).update({
+    const db = wx.cloud.database()
+    db.collection('userInfo').doc(this.data.carts[e.target.dataset.index]._id).update({
       data: {
-        carts: _.set(this.data.carts)
+        count:this.data.carts[index].count,
       }
     })
     console.log("carts:" + this.data.carts);
@@ -238,24 +242,23 @@ Page({
   },
   /* 加数 */
   addCount: function (e) {
-    var index = e.target.dataset.index;
+    let index = e.target.dataset.index;
     console.log("刚刚您点击了加+");
-    var count = this.data.carts[index].count;
+    let count = this.data.carts[index].count;
     // 商品总数量+1  
     if (count < 100) {
-      this.data.carts[index].count++;
+      this.data.carts[index].count ++;
     }
     // 将数值与状态写回  
     this.setData({
       carts: this.data.carts,
-      count
     });
 
     let db = wx.cloud.database()
     const _ = db.command;
-    db.collection('userInfo').doc(this.data.id).update({
+    db.collection('userInfo').doc(this.data.carts[e.target.dataset.index]._id).update({
       data: {
-        carts: _.set(this.data.carts)
+        count:this.data.carts[index].count,
       }
     })
     console.log("carts:" + this.data.carts);
@@ -263,7 +266,7 @@ Page({
   },
   priceCount: function (e) {
     this.data.totalMoney = 0;
-    for (var i = 0; i < this.data.carts.length; i++) {
+    for (let i = 0; i < this.data.carts.length; i++) {
       if (this.data.carts[i].isSelect == true) {
         this.data.totalMoney = this.data.totalMoney + (this.data.carts[i].price * this.data.carts[i].count);
       }
@@ -275,30 +278,30 @@ Page({
   },
   /* 删除item */
   delGoods: function (e) {
-    this.data.carts.splice(e.target.id.substring(3), 1);
-    // 更新data数据对象  
-    let db = wx.cloud.database()
-    const _ = db.command;
-    db.collection('userInfo').doc(this.data.id).update({
-      data: {
-        carts: _.set(this.data.carts)
+
+    wx.showModal({
+      title:'警告',
+      content:'是否删除',
+      cancelColor: 'cancelColor',
+      success:(res) => {
+        if(res.confirm){
+
+          const db = wx.cloud.database()
+
+          db.collection('userInfo').doc(this.data.carts[e.target.dataset.index]._id).remove({
+            success:(res) =>console.log(res)
+          })
+      
+          console.log(e.target.dataset.index)
+          this.data.carts.splice(e.target.dataset.index, 1);
+          console.log(this.data.carts)
+          
+          this.setData({
+            carts:this.data.carts
+          })
+        }
       }
     })
-
-    if (this.data.carts.length > 0) {
-      this.setData({
-        carts: this.data.carts
-      })
-      wx.setStorageSync('cart', this.data.carts);
-      this.priceCount();
-    } else {
-      this.setData({
-        cart: this.data.carts,
-        iscart: false,
-        hidden: true,
-      })
-      wx.setStorageSync('cart', []);
-    }
   },
 
 })

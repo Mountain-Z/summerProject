@@ -11,38 +11,39 @@
 
 <!-- 中间的八个按钮盒子 -->
 <view class="midBox" bindtap="testSQL">
-  <view class="midModular" bindtap="clickBox" id="memberReach">
+  <view class="midModular" bindtap="clickBox">
      <image src="pic/vip.png" class="midIcon"></image>
-     <text class="midText">会员触达</text>
+     <view class="midText">会员触达</view>
   </view>
-  <view class="midModular" bindtap="clickBox" id="commodityManagement">
+  <view class="midModular" bindtap="clickBox" >
      <image src="pic/goodsManage.png" class="midIcon"></image>
-     <text class="midText">商品管理</text>
+     <view class="midText">商品管理</view>
   </view>
-  <view class="midModular" bindtap="clickBox" id="bargainingForYou">
+  <view class="midModular" bindtap="clickBox">
      <image src="pic/bargain.png" class="midIcon"></image>
-     <text class="midText">帮你砍价</text>
+     <view class="midText">帮你砍价</view>
   </view>
-    <view class="midModular" bindtap="clickBox" id="voiceRedPacket">
+    <view class="midModular" bindtap="clickBox">
      <image src="pic/voice.png" class="midIcon"></image>
-     <text class="midText">语音红包</text>
+     <view class="midText">语音红包</view>
   </view>
-  <view class="midModular" bindtap="clickBox" id="timedSeconds">
+  <view class="midModular" bindtap="clickBox">
      <image src="pic/crush.png" class="midIcon"></image>
-     <text class="midText">定时秒杀</text>
+     <view class="midText">定时秒杀</view>
   </view>
-  <view class="midModular" bindtap="clickBox" id="privilegeManagement">
+  <view class="midModular" bindtap="clickBox">
      <image src="pic/property.png" class="midIcon"></image>
-     <text class="midText">特权管理</text>
+     <view class="midText">特权管理</view>
   </view>
-  <view class="midModular" bindtap="clickBox" id="pointsMall">
+  <view class="midModular" bindtap="clickBox" >
      <image src="pic/shop.png" class="midIcon"></image>
-     <text class="midText">积分商城</text>
-  <view class="midModular" bindtap="clickBox" id="timeAuction">
+     <view class="midText">积分商城</view>
+   </view>
+  <view class="midModular" bindtap="clickBox">
      <image src="pic/auction.png" class="midIcon"></image>
-     <text class="midText">定时拍卖</text>
+     <view class="midText">定时拍卖</view>
   </view>
-  </view>
+  
 </view>
 
 <!-- 商品栏 -->

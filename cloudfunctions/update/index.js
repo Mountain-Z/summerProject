@@ -16,7 +16,6 @@ exports.main = async (event, context) => {
 			goodsId:event.goodsId
 		}).update({
 			data:{
-				count:event.count,
 				orderStatus:event.status
 			}
 		})

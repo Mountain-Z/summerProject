@@ -2,7 +2,7 @@
 <!-- <image class="img1"  src="/miniprogram/images/微信 (1).png" mode="cover" ></image>
 <button>登录</button> -->
 <view  class="userinfo" wx:if="{{!hasUserInfo && canIUse}}">
-  <image class="img1" src="../../images/微信登录.png" mode="width"></image>
+  <image class="img1" src="../../images/login.png" mode="aspectFil"></image>
   <button size="mini" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
 </view>
 <view class="userinfo"  wx:else>

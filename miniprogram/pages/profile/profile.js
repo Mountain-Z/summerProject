@@ -7,36 +7,11 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-   /*  orderItems: [
-      {        
-        typeId: 0,        
-        name: '待付款',        
-        url: '../detail/detail',        
-        imageurl: '../../images/待支付.png',
-      },
-      {        
-        typeId: 1,        
-        name: '待发货',        
-        url: '',        
-        imageurl: '../../images/待发货.png',
-      },
-      {        
-        typeId: 2,        
-        name: '待收货',        
-        url: '',        
-        imageurl: '../../images/待收货.png'
-      },
-      {        
-        typeId: 3,        
-        name: '已完成',        
-        url: '',        
-        imageurl: '../../images/已完成.png'
-      }
-    ], */
+
     menuitems: [
-      { text: '查看订单', url: '../order/order', imgurl:'../../images/订单.png'  },
-      { text: '收货地址', url: '../addressList/addressList', imgurl:'../../images/收货地址.png'  },
-      { text: '联系客服', url: '../index/index', imgurl:'../../images/联系客服.png' }
+      { text: '查看订单', url: '../order/order', imgurl:'../../images/order.png'  },
+      { text: '收货地址', url: '../addressList/addressList', imgurl:'../../images/address.png'  },
+      { text: '联系客服', url: '../index/index', imgurl:'../../images/service.png' }
     ]
   },
 
