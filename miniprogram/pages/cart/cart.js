@@ -60,6 +60,8 @@ Page({
   },
   //勾选事件处理函数  
   switchSelect: function (e) {
+
+ 
     // 获取item项的id，和数组的下标值  
     let Allprice = 0
     let i = 0;
@@ -83,16 +85,25 @@ Page({
     for (i = 0; i < this.data.carts.length; i++) {
       Allprice = Allprice + (this.data.carts[index].price * this.data.carts[index].count);
     }
-    if (Allprice == this.data.totalMoney) {
-      this.data.isAllSelect = true;
-    } else {
-      this.data.isAllSelect = false;
+
+    const len = this.data.carts.length
+    const goodsItems = this.data.carts.filter((res) =>{
+      return res.isSelect === true
+    })
+
+    if(len == goodsItems.length){
+      this.setData({
+        isAllSelect: true,
+      })
+    }else{
+      this.setData({
+        isAllSelect: false,
+      })
     }
 
     this.setData({
       carts: this.data.carts,
       totalMoney: this.data.totalMoney,
-      isAllSelect: this.data.isAllSelect,
       isSelect:this.data.isSelect,
     })
     ///////////////////////////////////////////////
@@ -115,18 +126,20 @@ Page({
   },
   //全选
   allSelect: function (e) {
+ 
+
     if(this.data.carts.length !== 0){
       //处理全选逻辑
-      let i = 0;
+     
       if (!this.data.isAllSelect) {
         this.data.totalMoney = 0;
-        for (i = 0; i < this.data.carts.length; i++) {
+        for (let i = 0; i < this.data.carts.length; i++) {
           this.data.carts[i].isSelect = true;
           this.data.totalMoney = this.data.totalMoney + (this.data.carts[i].price * this.data.carts[i].count);
 
         }
       } else {
-        for (i = 0; i < this.data.carts.length; i++) {
+        for (let i = 0; i < this.data.carts.length; i++) {
           this.data.carts[i].isSelect = false;
         }
         this.data.totalMoney = 0;
@@ -137,6 +150,7 @@ Page({
         totalMoney: this.data.totalMoney,
       })
     }
+  
    
   },
   // 去结算
